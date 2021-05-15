@@ -1,7 +1,5 @@
 FROM ubuntu:20.04
 
-ARG WWWGROUP
-
 WORKDIR /var/www/html
 
 ENV TZ=Asia/Tokyo
@@ -45,10 +43,7 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.0
 
 COPY . /var/www/html
 RUN composer install --no-dev
-COPY docker/start-container /usr/local/bin/start-container
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY docker/php.ini /etc/php/8.0/cli/conf.d/99-sail.ini
-RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 8000
 
