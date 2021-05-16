@@ -1,2 +1,5 @@
 .env
 /mysql
+/mailhog
+/meilisearch
+/redis

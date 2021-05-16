@@ -9,8 +9,6 @@ services:
             - '80:80'
         volumes:
             - './api:/var/www/html:delegated'
-        networks:
-            - sail
         depends_on:
             - mysql
             - redis
@@ -25,8 +23,6 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
         volumes:
             - './mysql/data:/var/lib/mysql'
-        networks:
-            - sail
         healthcheck:
           test: ["CMD", "mysqladmin", "ping"]
     redis:
@@ -34,9 +30,7 @@ services:
         ports:
             - '6379:6379'
         volumes:
-            - 'sailredis:/data'
-        networks:
-            - sail
+            - './redis/data:/data'
         healthcheck:
           test: ["CMD", "redis-cli", "ping"]
     meilisearch:
@@ -44,32 +38,19 @@ services:
         ports:
             - '7700:7700'
         volumes:
-            - 'sailmeilisearch:/data.ms'
-        networks:
-            - sail
+            - './meilisearch/data:/data.ms'
     mailhog:
         image: 'mailhog/mailhog:latest'
         ports:
             - '1025:1025'
             - '8025:8025'
-        networks:
-            - sail
+        command: ["-storage=maildir", "-maildir-path=/maildir"]
+        volumes:
+            - ./mailhog/data:/maildir
     next.prod:
         build:
           context: ./next
           dockerfile: docker/Dockerfile.production
         ports:
             - '3000:3000'
-        networks:
-            - sail
-networks:
-    sail:
-        driver: bridge
-volumes:
-    sailmysql:
-        driver: local
-    sailredis:
-        driver: local
-    sailmeilisearch:
-        driver: local
 
