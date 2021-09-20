@@ -2,7 +2,7 @@ version: '3'
 services:
     laravel.prod:
         build:
-            context: ./api
+            context: .
             dockerfile: docker/laravel/Dockerfile.production
         image: sail-8.0/app
         ports:
@@ -49,7 +49,7 @@ services:
             - ./mailhog/data:/maildir
     next.prod:
         build:
-          context: ./next
+          context: .
           dockerfile: docker/next/Dockerfile.production
         ports:
             - '3000:3000'
