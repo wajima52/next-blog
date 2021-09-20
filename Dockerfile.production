@@ -1,12 +1,12 @@
 FROM node:alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY ./next/package.json ./next/package.json ./
+COPY ./package.json ./package.json ./
 RUN npm install --production
 
 FROM node:alpine AS builder
 WORKDIR /app
-COPY next .
+COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN npm run build
 

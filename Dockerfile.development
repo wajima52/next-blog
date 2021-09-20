@@ -3,9 +3,12 @@ WORKDIR /app
 
 ENV NODE_ENV development
 RUN apk add --no-cache libc6-compat
-COPY next .
+RUN npm install -g npm-check-updates
+COPY . .
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
+RUN chown -R nextjs:nodejs /app
 USER nextjs
+RUN npm install
 
 EXPOSE 3000

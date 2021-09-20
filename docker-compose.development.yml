@@ -1,62 +1,12 @@
 version: '3'
 services:
-    laravel.dev:
-        container_name: "${SERVICE_NAME}.laravel.dev"
-        build:
-            context: .
-            dockerfile: docker/laravel/Dockerfile.development
-        image: sail-8.0/app
-        ports:
-            - '80:80'
-        volumes:
-            - './api:/var/www/html:delegated'
-        depends_on:
-            - mysql
-            - redis
-        command: bash -c 'php artisan config:cache&& /usr/bin/php -d variables_ordder=EGPCS /var/www/html/artisan serve --host=0.0.0.0 --port=80'
-    mysql:
-        image: 'mysql:8.0'
-        ports:
-            - '3306:3306'
-        environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
-        volumes:
-            - './mysql/data:/var/lib/mysql'
-        healthcheck:
-          test: ["CMD", "mysqladmin", "ping"]
-    redis:
-        image: 'redis:alpine'
-        ports:
-            - '6379:6379'
-        volumes:
-            - './redis/data:/data'
-        healthcheck:
-          test: ["CMD", "redis-cli", "ping"]
-    meilisearch:
-        image: 'getmeili/meilisearch:latest'
-        ports:
-            - '7700:7700'
-        volumes:
-            - './meilisearch/data:/data.ms'
-    mailhog:
-        image: 'mailhog/mailhog:latest'
-        ports:
-            - '1025:1025'
-            - '8025:8025'
-        command: ["-storage=maildir", "-maildir-path=/maildir"]
-        volumes:
-            - ./mailhog/data:/maildir
-
     next.dev:
         build:
-          context: ./docker
-          dockerfile: next/Dockerfile.development
+          context: .
+          dockerfile: Dockerfile.development
         ports:
             - '3000:3000'
         volumes:
-            - './next:/app'
+            - '.:/app'
         command: ash -c "npm install && npm run dev"
 
