@@ -3,7 +3,7 @@ services:
     laravel.prod:
         build:
             context: ./api
-            dockerfile: docker/Dockerfile.production
+            dockerfile: docker/laravel/Dockerfile.production
         image: sail-8.0/app
         ports:
             - '80:80'
@@ -50,7 +50,7 @@ services:
     next.prod:
         build:
           context: ./next
-          dockerfile: docker/Dockerfile.production
+          dockerfile: docker/next/Dockerfile.production
         ports:
             - '3000:3000'
 

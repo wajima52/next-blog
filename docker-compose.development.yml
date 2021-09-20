@@ -1,9 +1,10 @@
 version: '3'
 services:
     laravel.dev:
+        container_name: "${SERVICE_NAME}.laravel.dev"
         build:
-            context: ./api
-            dockerfile: docker/Dockerfile.development
+            context: .
+            dockerfile: docker/laravel/Dockerfile.development
         image: sail-8.0/app
         ports:
             - '80:80'
@@ -51,8 +52,8 @@ services:
 
     next.dev:
         build:
-          context: ./next
-          dockerfile: docker/Dockerfile.development
+          context: ./docker
+          dockerfile: next/Dockerfile.development
         ports:
             - '3000:3000'
         volumes:
