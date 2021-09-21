@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write './**/*.{tsx,ts}'",
-    "lint": "eslint --ext .ts,.tsx --fix --max-warnings 0 .",
-    "type-check": "tsc -p ."
+    "lint": "next lint",
+    "type-check": "tsc -p .",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
@@ -36,6 +37,7 @@
     "autoprefixer": "^10.3.4",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.32.0",
+    "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
     "eslint-import-resolver-typescript": "^2.5.0",
@@ -45,7 +47,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.25.3",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^7.0.2",
+    "husky": "^7.0.0",
     "lint-staged": "^11.1.2",
     "postcss": "^8.3.6",
     "prettier": "^2.4.1",
