@@ -23,28 +23,7 @@ export const Header: React.FC = () => {
           </svg>
         </button>
       </div>
-      <ToggleMenu isOpen={isOpen}>
-        <div className="text-sm lg:flex-grow">
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
-          >
-            Docs
-          </a>
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
-          >
-            Examples
-          </a>
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white"
-          >
-            Blog
-          </a>
-        </div>
-      </ToggleMenu>
+      <ToggleMenu isOpen={isOpen} />
     </nav>
   )
 }

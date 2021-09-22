@@ -1,6 +1,6 @@
 import { Header } from "../components/Organisms/Header"
 
-export const Home = () => {
+export default function Home() {
   return (
     <>
       <Header />
