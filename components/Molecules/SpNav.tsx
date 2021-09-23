@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { MenuItems } from "../../libs/constants/menuItems"
+import { NavItems } from "../../libs/constants/navItems"
 import Link from "next/link"
 
 const SpNav: React.FC = () => {
@@ -35,7 +35,7 @@ const SpNav: React.FC = () => {
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          {MenuItems.map((menuItem, index) => (
+          {NavItems.map((menuItem, index) => (
             <Link href={menuItem.href} key={index}>
               <a
                 className={

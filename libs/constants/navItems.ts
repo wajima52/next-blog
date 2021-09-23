@@ -1,6 +1,6 @@
 import { TextLink } from "../types/TextLink"
 
-export const MenuItems: TextLink[] = [
+export const NavItems: TextLink[] = [
   {
     name: "Blogs",
     href: "/",

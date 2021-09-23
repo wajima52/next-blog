@@ -1,9 +1,11 @@
-import { Header } from "../components/Organisms/Header"
+import Default from "../components/Templates/Default"
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <Default>
+        <div>hogehuge</div>
+      </Default>
     </>
   )
 }
