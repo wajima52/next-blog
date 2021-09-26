@@ -1,8 +1,8 @@
 import { Header } from "../Organisms/Header"
-import { ReactElement } from "react"
+import React, { ReactElement } from "react"
 
 type Props = {
-  children: ReactElement
+  children: ReactElement | ReactElement[]
 }
 
 const Default: React.FC<Props> = ({ children }) => {
