@@ -5,7 +5,7 @@ import React from "react"
 import Default from "../../components/Templates/Default"
 import { formatDateToJapanese } from "../../libs/functions/date"
 import { Article } from "../../libs/types/Article"
-import { ArticleFields } from "../../libs/types/ArticleFields"
+import { getArticles } from "../../libs/functions/article"
 
 type Props = {
   articles: Article[]
@@ -62,19 +62,7 @@ const Blogs: React.FC<Props> = (props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  })
-
-  const entries = await client.getEntries<ArticleFields>()
-  const articles: Article[] = entries.items.map((item) => ({
-    tags: item.metadata.tags.map((tag) => tag.sys.id),
-    createdAt: item.sys.createdAt,
-    updatedAt: item.sys.updatedAt,
-    ...item.fields,
-  }))
-
+  const articles = await getArticles()
   return {
     props: {
       articles: articles,

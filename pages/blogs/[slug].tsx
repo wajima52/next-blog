@@ -1,9 +1,8 @@
-import * as contentful from "contentful"
 import { GetStaticPaths, GetStaticProps } from "next"
 import React from "react"
 import Default from "../../components/Templates/Default"
 import { Article } from "../../libs/types/Article"
-import { ArticleFields } from "../../libs/types/ArticleFields"
+import { getArticleBySlug, getArticles } from "../../libs/functions/article"
 
 type Props = {
   article: Article
@@ -24,25 +23,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  })
+  const article = await getArticleBySlug(String(context.params.slug))
 
-  const entry = (
-    await client.getEntries<ArticleFields>({
-      fields: {
-        slug: String(context.params.slug),
-      },
-      content_type: "blogPost",
-    })
-  ).items[0]
-
-  const article: Article = {
-    tags: entry.metadata.tags.map((tag) => tag.sys.id),
-    createdAt: entry.sys.createdAt,
-    updatedAt: entry.sys.updatedAt,
-    ...entry.fields,
+  if (!article) {
+    return {
+      notFound: true,
+    }
   }
 
   return {
