@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import React from "react"
 import Default from "../../components/Templates/Default"
-import { Article } from "../../libs/types/Article"
 import { getArticleBySlug, getArticles } from "../../libs/functions/article"
+import { Article } from "../../libs/types/Article"
 
 type Props = {
   article: Article

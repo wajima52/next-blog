@@ -3,9 +3,9 @@ import { GetStaticProps } from "next"
 import Link from "next/link"
 import React from "react"
 import Default from "../../components/Templates/Default"
+import { getArticles } from "../../libs/functions/article"
 import { formatDateToJapanese } from "../../libs/functions/date"
 import { Article } from "../../libs/types/Article"
-import { getArticles } from "../../libs/functions/article"
 
 type Props = {
   articles: Article[]
