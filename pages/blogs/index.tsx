@@ -1,11 +1,11 @@
 import * as contentful from "contentful"
 import { GetStaticProps } from "next"
+import Link from "next/link"
 import React from "react"
 import Default from "../../components/Templates/Default"
 import { formatDateToJapanese } from "../../libs/functions/date"
-import { ArticleFields } from "../../libs/types/ArticleFields"
 import { Article } from "../../libs/types/Article"
-import Link from "next/link"
+import { ArticleFields } from "../../libs/types/ArticleFields"
 
 type Props = {
   articles: Article[]

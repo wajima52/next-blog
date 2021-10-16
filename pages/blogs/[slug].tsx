@@ -1,7 +1,7 @@
+import * as contentful from "contentful"
+import { GetStaticPaths, GetStaticProps } from "next"
 import React from "react"
 import Default from "../../components/Templates/Default"
-import { GetStaticPaths, GetStaticProps } from "next"
-import * as contentful from "contentful"
 import { Article } from "../../libs/types/Article"
 import { ArticleFields } from "../../libs/types/ArticleFields"
 
