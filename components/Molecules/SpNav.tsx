@@ -1,6 +1,6 @@
+import Link from "next/link"
 import React, { useEffect, useState } from "react"
 import { NavItems } from "../../libs/constants/navItems"
-import Link from "next/link"
 
 const SpNav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,11 +11,11 @@ const SpNav: React.FC = () => {
     <div className={"sm:hidden"}>
       <div className="inline-flex">
         <button
-          className="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-whiten lg:hidden"
+          className="flex lg:hidden items-center py-2 px-3 hover:text-white rounded border hover:border-white"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
-            className="h-3 w-3"
+            className="w-3 h-3"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -39,7 +39,7 @@ const SpNav: React.FC = () => {
             <Link href={menuItem.href} key={index}>
               <a
                 className={
-                  "block py-2 px-3 ml-4 text-teal-lighter hover:text-white font-medium text-base"
+                  "block py-2 px-3 ml-4 text-base font-medium hover:text-white"
                 }
               >
                 {menuItem.name}

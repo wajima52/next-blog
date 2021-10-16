@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write './**/*.{tsx,ts}'",
-    "lint": "next lint",
-    "type-check": "tsc -p .",
+    "lint": "next lint --fix",
+    "type-check": "tsc",
     "prepare": "husky install"
   },
   "husky": {
@@ -21,11 +21,13 @@
       "prettier --config ./.prettierrc --write"
     ],
     "./**/*.{js,jsx,ts,tsx}": [
-      "next lint",
-      "npm run type-check"
+      "npm run lint",
+      "npm run type-check",
+      "git add"
     ]
   },
   "dependencies": {
+    "contentful": "^9.0.3",
     "next": "11.1.2",
     "next-seo": "^4.28.1",
     "react": "17.0.2",
@@ -49,6 +51,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.25.3",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-tailwindcss": "^1.17.0",
     "husky": "^7.0.0",
     "lint-staged": "^11.1.2",
     "postcss": "^8.3.6",

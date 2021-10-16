@@ -20,6 +20,7 @@ module.exports = {
     "react",
     "prettier",
     "eslint-plugin-import-helpers",
+    "tailwindcss",
   ],
   extends: [
     "plugin:@typescript-eslint/recommended",
@@ -29,6 +30,7 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:jsx-a11y/recommended",
+    "plugin:tailwindcss/recommended",
     "prettier",
     "next",
   ],

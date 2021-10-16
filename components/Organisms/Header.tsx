@@ -1,15 +1,17 @@
 import React from "react"
-import SpNav from "../Molecules/SpNav"
 import PcNav from "../Molecules/PcNav"
+import SpNav from "../Molecules/SpNav"
 
 export const Header: React.FC = () => {
   return (
     <>
-      <header className="w-full bg-white flex-wrap bg-teal py-6 px-6 sm:px-20 shadow-md ">
+      <header className="flex-wrap py-8 px-6 sm:px-20 w-full bg-white shadow-md">
         <div
-          className={`flex items-center justify-between max-w-2xl xl:max-w-4xl mx-auto`}
+          className={
+            "flex justify-between items-center mx-auto max-w-2xl xl:max-w-4xl"
+          }
         >
-          <div className="items-center flex-no-shrink mr-6">Site Logo</div>
+          <div className="items-center mr-6">Site Logo</div>
           <PcNav />
           <SpNav />
         </div>

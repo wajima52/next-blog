@@ -3,3 +3,4 @@
 /mailhog
 /meilisearch
 /redis
+.env.local

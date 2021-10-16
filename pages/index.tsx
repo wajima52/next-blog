@@ -1,6 +1,6 @@
-import Default from "../components/Templates/Default"
 import { NextSeo } from "next-seo"
 import React from "react"
+import Default from "../components/Templates/Default"
 
 const Home: React.FC = () => {
   return (
