@@ -33,9 +33,7 @@ const Blogs: React.FC<Props> = (props) => {
                         <dt className={"sr-only"}>更新日</dt>
                         <dd className={"text-base text-gray-500"}>
                           <time dateTime={article.publishedAt}>
-                            {formatDateToJapanese(
-                              new Date(article.publishedAt)
-                            )}
+                            {formatDateToJapanese(new Date(article.updatedAt))}
                           </time>
                         </dd>
                       </dl>
