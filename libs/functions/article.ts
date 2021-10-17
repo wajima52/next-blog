@@ -10,8 +10,11 @@ export const getArticles = async (): Promise<Article[]> => {
   return entries.items.map((item) => convertEntryToArticle(item))
 }
 
-export const getArticleBySlug = async (slug: string): Promise<Article> => {
-  const client = getClient()
+export const getArticleBySlug = async (
+  slug: string,
+  isPreview = false
+): Promise<Article> => {
+  const client = getClient(isPreview)
   const entries = await client.getEntries<ArticleFields>({
     "fields.slug": String(slug),
     content_type: "blogPost",
@@ -31,9 +34,14 @@ const convertEntryToArticle = (entry: Entry<ArticleFields>): Article => {
   }
 }
 
-const getClient = () => {
-  return contentful.createClient({
+export const getClient = (isPreview = false) => {
+  const params = {
     space: process.env.CONTENTFUL_SPACE,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  })
+    accessToken: isPreview
+      ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+      : process.env.CONTENTFUL_ACCESS_TOKEN,
+  }
+  return contentful.createClient(
+    isPreview ? { host: "preview.contentful.com", ...params } : params
+  )
 }

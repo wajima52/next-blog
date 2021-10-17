@@ -27,14 +27,14 @@ const BlogArticle: React.FC<Props> = (props) => {
         <div>
           <dt
             className={
-              "inline-block mx-3 text-base font-medium leading-6 text-gray-500 dark:text-gray-400 inline-block"
+              "inline-block mx-3 text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
             }
           >
             更新日
           </dt>
           <dd
             className={
-              "text-base font-medium leading-6 text-gray-500 dark:text-gray-400 inline-block"
+              "inline-block text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
             }
           >
             <time dateTime={props.article.updatedAt}>
@@ -56,7 +56,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const article = await getArticleBySlug(String(context.params.slug))
+  const article = await getArticleBySlug(
+    String(context.params.slug),
+    context.preview
+  )
 
   if (!article) {
     return {
