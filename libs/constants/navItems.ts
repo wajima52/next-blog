@@ -3,7 +3,7 @@ import { TextLink } from "../types/TextLink"
 export const NavItems: TextLink[] = [
   {
     name: "Blogs",
-    href: "/",
+    href: "/blogs",
   },
   {
     name: "Docs",

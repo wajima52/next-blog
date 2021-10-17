@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import React from "react"
+import ReactMarkdown from "react-markdown"
 import Default from "../../components/Templates/Default"
 import { getArticleBySlug } from "../../libs/functions/article"
-import { Article } from "../../libs/types/Article"
-import ReactMarkdown from "react-markdown"
 import { formatDateToJapanese } from "../../libs/functions/date"
+import { Article } from "../../libs/types/Article"
 
 type Props = {
   article: Article
@@ -19,16 +19,22 @@ const BlogArticle: React.FC<Props> = (props) => {
       >
         <h1
           className={
-            "text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-4xl"
+            "text-3xl sm:text-4xl md:text-4xl tracking-tight leading-9 sm:leading-10 text-gray-900 dark:text-gray-100"
           }
         >
           {props.article.title}
         </h1>
         <div>
-          <dt className={"sr-only"}>更新日</dt>
+          <dt
+            className={
+              "inline-block mx-3 text-base font-medium leading-6 text-gray-500 dark:text-gray-400 inline-block"
+            }
+          >
+            更新日
+          </dt>
           <dd
             className={
-              "text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
+              "text-base font-medium leading-6 text-gray-500 dark:text-gray-400 inline-block"
             }
           >
             <time dateTime={props.article.updatedAt}>
@@ -37,7 +43,9 @@ const BlogArticle: React.FC<Props> = (props) => {
           </dd>
         </div>
       </div>
-      <ReactMarkdown>{props.article.body}</ReactMarkdown>
+      <ReactMarkdown className={"prose lg:prose-lg"}>
+        {props.article.body}
+      </ReactMarkdown>
     </Default>
   )
 }
