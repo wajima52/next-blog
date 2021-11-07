@@ -7,6 +7,11 @@ RUN npm install --production
 
 FROM node:16-alpine AS builder
 ENV NODE_ENV production
+ARG CONTENTFUL_SPACE
+ARG CONTENTFUL_ACCESS_TOKEN
+ARG CONTENTFUL_PREVIEW_ACCESS_TOKEN
+ARG CONTENTFUL_PREVIEW_SECRET
+
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
