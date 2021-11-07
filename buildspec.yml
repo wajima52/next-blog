@@ -18,5 +18,6 @@ phases:
     commands:
       - printf '[{"name":"next-blog", "imageUri": "%s"}]' $IMAGE > imagedefinitions.json
 artifacts:
-  files: imagedefinitions.json
+  files:
+    - imagedefinitions.json
 
