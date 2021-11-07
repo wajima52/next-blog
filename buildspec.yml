@@ -12,7 +12,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - docker build -t $IMAGE -f Dockerfile.production .
+      - docker build -t $IMAGE -f Dockerfile.production --build-arg CONTENTFUL_SPACE=${CONTENTFUL_SPACE} --build-arg CONTENTFUL_ACCESS_TOKEN=${CONTENTFUL_ACCESS_TOKEN} --build-arg CONTENTFUL_PREVIEW_ACCESS_TOKEN=${CONTENTFUL_PREVIEW_ACCESS_TOKEN} --build-arg CONTENTFUL_PREVIEW_SECRET=${CONTENTFUL_PREVIEW_SECRET} .
       - docker push $IMAGE
   post_build:
     commands:
