@@ -15,7 +15,6 @@ phases:
       docker: 18
   pre_build:
     commands:
-      - aws ecr get-login-password --region ap-northeast-1
       - echo ${DOCKERHUB_PASSWORD} | docker login --username $DOCKERHUB_USER --password-stdin
       - REPO=$(aws ecr describe-repositories --repository-names "next-blog" --output text --query "repositories[0].repositoryUri")
       - IMAGE=$(echo $REPO):latest
