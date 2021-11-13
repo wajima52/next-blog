@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
             "flex justify-between items-center mx-auto max-w-2xl xl:max-w-4xl"
           }
         >
-          <div className="items-center mr-6">Site Logo</div>
+          <div className="items-center mr-6">Site Logo!!!</div>
           <PcNav />
           <SpNav />
         </div>
