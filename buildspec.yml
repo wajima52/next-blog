@@ -6,8 +6,8 @@ env:
     CONTENTFUL_SPACE: ${SECRET_ID}:CONTENTFUL_SPACE
     CONTENTFUL_PREVIEW_ACCESS_TOKEN: ${SECRET_ID}:CONTENTFUL_PREVIEW_ACCESS_TOKEN
     CONTENTFUL_PREVIEW_SECRET: ${SECRET_ID}:CONTENTFUL_PREVIEW_SECRET
-    DOCKER_HUB_USER	: ${SECRET_ID}:DOCKER_HUB_USER
-    DOCKER_HUB_PASSWORD: ${SECRET_ID}:DOCKER_HUB_PASSWORD
+    DOCKERHUB_USER	: ${SECRET_ID}:DOCKERHUB_USER
+    DOCKERHUB_PASSWORD: ${SECRET_ID}:DOCKERHUB_PASSWORD
 
 phases:
   install:
@@ -15,7 +15,8 @@ phases:
       docker: 18
   pre_build:
     commands:
-      - aws ecr get-login-password --region ap-northeast-1 | docker login --username $DOCKER_HUB_USER --password-stdin $DOCKER_HUB_PASSWORD
+      - aws ecr get-login-password --region ap-northeast-1
+      - echo ${DOCKERHUB_PASSWORD} | docker login --username $DOCKERHUB_USER --password-stdin
       - REPO=$(aws ecr describe-repositories --repository-names "next-blog" --output text --query "repositories[0].repositoryUri")
       - IMAGE=$(echo $REPO):latest
   build:
